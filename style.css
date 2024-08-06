@@ -1,0 +1,10 @@
+.result-container{
+    display:flex;
+    flex-direction: column;
+  }
+.finalPrice,.Benefits{
+    display:flex;
+    gap:8px;
+    height: fit-content;
+    
+}
