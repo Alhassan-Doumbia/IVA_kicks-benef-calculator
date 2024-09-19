@@ -4,58 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>IVA-calculateur de prix</title>
+    <title>IVA-Benefits calculator</title>
   </head>
   <body>
-    <form>
-      <label for="price">Le prix : </label>
-      <input
-        type="text"
-        id="price"
-        pattern="\d*"
-        placeholder="entrez que des chiffres SVP "
-      />
-      <input type="submit" id="submission" />
-    </form>
-    <div class="result-container">
-      <div class="finalPrice">
-        <p>le prix final est :</p>
-        <p id="result">???</p>
-      </div>
+    <div class="container">
+      <form class="calculator-form">
+        <label for="price">Le prix : </label>
+        <input
+          type="text"
+          id="price"
+          pattern="\d*"
+          placeholder="Entrez que des chiffres SVP"
+        />
+        <input type="submit" id="submission" value="Calculer" />
+      </form>
 
-      <div class="Benefits">
-        <p>le bénéfice  est :</p>
-        <p id="benefits">???</p>
+      <div class="result-container">
+        <div class="finalPrice">
+          <p>Le prix final est :</p>
+          <p id="result">???</p>
+        </div>
+
+        <div class="Benefits">
+          <p>Le bénéfice est :</p>
+          <p id="benefits">???</p>
+        </div>
       </div>
     </div>
 
     <script>
       function finalPrice(price) {
-        // Conversion de la chaîne de caractères en entier
         price = parseInt(price, 10);
         let cabbas_price = 1000;
-        let perfume_pshit_price = 100; // pour 50 sacs, cela donne un parfum de 5 000 f
+        let perfume_pshit_price = 100;
         let card_price = 150;
         let ct = price + cabbas_price + perfume_pshit_price + card_price;
-
-        // Marge de 15%
         let pv = ct * (0.15 + 1);
         return { finalPrice: pv, cost: ct };
       }
 
-      // Sélecteurs
-      let submission = document.getElementById("submission"); // bouton pour soumettre
+      let submission = document.getElementById("submission");
       let result = document.getElementById("result");
-      let benefits = document.getElementById("benefits"); // pour afficher le bénéfice
-      let price=document.getElementById('price');
+      let benefits = document.getElementById("benefits");
+      let price = document.getElementById("price");
 
       submission.addEventListener("click", (e) => {
         e.preventDefault();
-        let price_input_value = document.getElementById("price").value; // prendre la valeur directement dans l'input
+        let price_input_value = document.getElementById("price").value;
         let final_price_result = finalPrice(price_input_value);
         let profit = final_price_result.finalPrice - final_price_result.cost;
-        result.textContent = ` ${final_price_result.finalPrice.toFixed(2)} F CFA`;
-        benefits.textContent=` ${profit.toFixed(2)} F CFA`
+        result.textContent = `${final_price_result.finalPrice.toFixed(2)} F CFA`;
+        benefits.textContent = `${profit.toFixed(2)} F CFA`;
       });
     </script>
   </body>
