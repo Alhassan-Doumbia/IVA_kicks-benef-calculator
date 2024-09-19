@@ -1,4 +1,4 @@
-
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +11,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px; /* Added padding for smaller screens */
 }
 
 /* Container for form and results */
@@ -22,6 +23,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Styling for the form */
@@ -86,4 +88,51 @@ body {
   font-weight: bold;
   font-size: 1.2rem;
   color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Container width adapts to screen size */
+    padding: 15px; /* Less padding on smaller screens */
+  }
+
+  .calculator-form input[type="text"], 
+  .calculator-form input[type="submit"] {
+    font-size: 0.9rem; /* Slightly smaller font size for smaller screens */
+    padding: 8px; /* Reduced padding for smaller screens */
+  }
+
+  .result-container p {
+    font-size: 1rem;
+  }
+
+  #result, #benefits {
+    font-size: 1.1rem; /* Slightly smaller result text */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%; /* Full width for very small screens */
+    padding: 10px; 
+  }
+
+  .calculator-form label {
+    font-size: 1rem; /* Adjust label size for small screens */
+  }
+
+  .calculator-form input[type="text"], 
+  .calculator-form input[type="submit"] {
+    font-size: 0.85rem; /* Further reduced text size */
+    padding: 6px; /* Reduced padding */
+  }
+
+  .result-container p {
+    font-size: 0.95rem; /* Smaller result text */
+  }
+
+  #result, #benefits {
+    font-size: 1rem; /* Adjusting result text */
+  }
 }
